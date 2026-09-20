@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elder Connect - Senior Companion & Community Care</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👵</text></svg>">
+</head>
+<body data-theme="warm">
+
+  <!-- =========================================================================
+       Site Header & Accessibility Bar
+       ========================================================================= -->
+  <header class="site-header" role="banner">
+    <div class="header-container">
+      
+      <!-- Brand & Welcome -->
+      <div class="brand-wrapper">
+        <span class="brand-icon" aria-hidden="true">👵❤️</span>
+        <div>
+          <h1 class="brand-title">Elder Connect</h1>
+          <p class="brand-subtitle">Care, Community & Daily Companion</p>
+        </div>
+      </div>
+
+      <!-- Accessibility Toolbar -->
+      <div class="accessibility-toolbar" role="region" aria-label="Accessibility settings">
+        
+        <!-- Text Size -->
+        <div class="tool-group" aria-label="Text Size Controls">
+          <span class="tool-label">Text:</span>
+          <button type="button" class="btn-tool active" id="font-normal-btn" title="Normal text size" aria-label="Normal text size">A</button>
+          <button type="button" class="btn-tool" id="font-large-btn" title="Large text size" aria-label="Large text size">A+</button>
+          <button type="button" class="btn-tool" id="font-xl-btn" title="Extra large text size" aria-label="Extra large text size">A++</button>
+        </div>
+
+        <!-- Color Theme -->
+        <div class="tool-group" aria-label="Theme Controls">
+          <span class="tool-label">Theme:</span>
+          <button type="button" class="btn-tool active" id="theme-warm-btn" title="Warm Daylight theme" aria-label="Warm daylight theme">☀️ Light</button>
+          <button type="button" class="btn-tool" id="theme-contrast-btn" title="High Contrast Dark theme" aria-label="High contrast dark theme">🌙 Contrast</button>
+          <button type="button" class="btn-tool" id="theme-soft-btn" title="Soft Comfort theme" aria-label="Soft comfort theme">🌿 Soft</button>
+        </div>
+
+        <!-- Voice Reading Toggle -->
+        <button type="button" class="btn-tool" id="toggle-speech-btn" title="Toggle voice reading assistant" aria-pressed="false">
+          <span aria-hidden="true">🔊</span>
+          <span class="toggle-indicator">Voice: OFF</span>
+        </button>
+
+        <!-- Emergency SOS Button -->
+        <button type="button" class="btn-sos" id="btn-trigger-sos" aria-label="Emergency SOS button. Press for immediate assistance.">
+          <span aria-hidden="true">🚨</span>
+          <span>EMERGENCY SOS</span>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       Navigation Tabs
+       ========================================================================= -->
+  <nav class="main-nav-bar" role="navigation" aria-label="Main Sections">
+    <div class="nav-container">
+      <button type="button" class="nav-tab active" data-tab="tab-today">
+        <span class="tab-icon" aria-hidden="true">🏠</span>
+        <span>Today's Hub</span>
+      </button>
+      <button type="button" class="nav-tab" data-tab="tab-health">
+        <span class="tab-icon" aria-hidden="true">💊</span>
+        <span>Medication & Health</span>
+      </button>
+      <button type="button" class="nav-tab" data-tab="tab-help">
+        <span class="tab-icon" aria-hidden="true">🤝</span>
+        <span>Ask for Help</span>
+      </button>
+      <button type="button" class="nav-tab" data-tab="tab-community">
+        <span class="tab-icon" aria-hidden="true">🌿</span>
+        <span>Community & Events</span>
+      </button>
+      <button type="button" class="nav-tab" data-tab="tab-family">
+        <span class="tab-icon" aria-hidden="true">💌</span>
+        <span>Family & Messages</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- =========================================================================
+       Main Content Container
+       ========================================================================= -->
+  <main class="app-main" id="main-content">
+
+    <!-- =====================================================================
+         VIEW 1: TODAY'S HUB (HOME)
+         ===================================================================== -->
+    <section id="tab-today" class="view-section active" aria-labelledby="view-today-heading">
+      
+      <!-- Welcome Banner -->
+      <div class="welcome-banner">
+        <div class="greeting-text">
+          <h2 id="view-today-heading" class="live-greeting">Good morning, Eleanor!</h2>
+          <p class="greeting-date" id="live-date-display">Sunday, September 20, 2026</p>
+          <p class="daily-quote" id="daily-quote-text">"Every new morning is another chance to enjoy the sunshine and share a kind word."</p>
+        </div>
+        <div class="weather-badge" aria-label="Current Weather: 72 degrees Fahrenheit, Sunny">
+          <span style="font-size: 2.5rem;" aria-hidden="true">☀️</span>
+          <div>
+            <div class="temp">72°F</div>
+            <div style="font-size: 0.95rem; color: var(--text-secondary); font-weight: 600;">Sunny & Mild</div>
+          </div>
+          <button type="button" class="btn-read-aloud" data-read-aloud="Good morning Eleanor. Today is Sunday, September 20. The weather in Sunnyvale is 72 degrees and sunny. Have a wonderful day!" aria-label="Read greeting aloud">
+            <span>🔊 Read</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="grid-2col">
+        
+        <!-- Daily Wellness & Mood Check-In -->
+        <section class="card" aria-labelledby="mood-title">
+          <div class="card-header">
+            <h3 class="card-title" id="mood-title">
+              <span aria-hidden="true">💛</span>
+              <span>How are you feeling today?</span>
+            </h3>
+            <button type="button" class="btn-read-aloud" data-read-aloud="How are you feeling today? Tap how you feel: Great, Peaceful, Tired, or Need Help." aria-label="Read mood question aloud">🔊 Read</button>
+          </div>
+          <p style="color: var(--text-secondary);">Tap an option below to log your morning wellness:</p>
+          
+          <div class="mood-selector" role="radiogroup" aria-label="Daily mood selection">
+            <button type="button" class="mood-btn" data-mood="Great" role="radio" aria-checked="false">
+              <span class="mood-emoji" aria-hidden="true">😊</span>
+              <span class="mood-label">Great</span>
+            </button>
+            <button type="button" class="mood-btn" data-mood="Peaceful" role="radio" aria-checked="false">
+              <span class="mood-emoji" aria-hidden="true">😌</span>
+              <span class="mood-label">Peaceful</span>
+            </button>
+            <button type="button" class="mood-btn" data-mood="Tired" role="radio" aria-checked="false">
+              <span class="mood-emoji" aria-hidden="true">🥱</span>
+              <span class="mood-label">A Bit Tired</span>
+            </button>
+            <button type="button" class="mood-btn" data-mood="NeedHelp" role="radio" aria-checked="false">
+              <span class="mood-emoji" aria-hidden="true">😟</span>
+              <span class="mood-label">Need Help</span>
+            </button>
+          </div>
+
+          <div class="mood-feedback" id="mood-feedback-msg" role="status" aria-live="polite"></div>
+        </section>
+
+        <!-- Quick Dials to Family & Doctor -->
+        <section class="card" aria-labelledby="speed-dial-title">
+          <div class="card-header">
+            <h3 class="card-title" id="speed-dial-title">
+              <span aria-hidden="true">📞</span>
+              <span>One-Touch Quick Call</span>
+            </h3>
+            <button type="button" class="btn-read-aloud" data-read-aloud="One-touch quick call. Tap to instantly dial your son David, daughter Sarah, or Dr. Sterling." aria-label="Read quick dial list aloud">🔊 Read</button>
+          </div>
+          <p style="color: var(--text-secondary);">Call your loved ones or doctor with a single tap:</p>
+
+          <div class="speed-dial-grid" id="speed-dial-container">
+            <!-- Populated via JavaScript -->
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Today's Pill & Routine Checklist -->
+      <section class="card" style="margin-top: 1.5rem;" aria-labelledby="pills-title">
+        <div class="card-header">
+          <h3 class="card-title" id="pills-title">
+            <span aria-hidden="true">⏰</span>
+            <span>Today's Medication & Routine Checklist</span>
+          </h3>
+          <div style="display: flex; gap: 0.5rem;">
+            <button type="button" class="btn-read-aloud" id="read-pills-summary" aria-label="Read medication list aloud">🔊 Read Schedule</button>
+            <button type="button" class="btn-tool" id="btn-open-add-med" style="background: var(--color-primary-light); color: var(--color-primary); font-size: 0.95rem;">
+              + Add Reminder
+            </button>
+          </div>
+        </div>
+        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+          Tap the big box next to each medication once you have taken it:
+        </p>
+        
+        <div class="pill-list" id="today-pill-list" role="list">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </section>
+
+    </section>
+
+    <!-- =====================================================================
+         VIEW 2: MEDICATION & HEALTH LOG
+         ===================================================================== -->
+    <section id="tab-health" class="view-section" aria-labelledby="view-health-heading">
+      
+      <!-- Emergency Medical ID Card -->
+      <div class="medical-id-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <span style="font-size: 0.9rem; font-weight: 800; text-transform: uppercase; color: var(--color-accent); letter-spacing: 0.05em;">Emergency Medical Profile</span>
+            <h2 id="view-health-heading" style="font-size: 1.8rem; font-weight: 800;">Eleanor Vance (Age 74)</h2>
+          </div>
+          <button type="button" class="btn-read-aloud" data-read-aloud="Medical ID Card. Blood Group: O-Positive. Allergies: Penicillin and Shellfish. Primary Doctor: Doctor Robert Sterling. Oakwood Medical Pavilion." aria-label="Read medical ID aloud">🔊 Read Medical Info</button>
+        </div>
+
+        <div class="medical-grid">
+          <div class="medical-item">
+            <div class="medical-label">Blood Group</div>
+            <div class="medical-val">O-Positive (O+)</div>
+          </div>
+          <div class="medical-item">
+            <div class="medical-label">Known Allergies</div>
+            <div class="medical-val" style="color: #dc2626;">Penicillin, Shellfish</div>
+          </div>
+          <div class="medical-item">
+            <div class="medical-label">Chronic Conditions</div>
+            <div class="medical-val">Hypertension, Knee Arthritis</div>
+          </div>
+          <div class="medical-item">
+            <div class="medical-label">Primary Physician</div>
+            <div class="medical-val">Dr. Robert Sterling</div>
+            <div style="font-size: 0.9rem; color: var(--text-secondary);">Oakwood Clinic • (555) 234-8901</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Water Hydration Tracker -->
+      <section class="card" aria-labelledby="water-tracker-title">
+        <div class="card-header">
+          <h3 class="card-title" id="water-tracker-title">
+            <span aria-hidden="true">💧</span>
+            <span>Daily Water Hydration Tracker</span>
+          </h3>
+          <span id="water-count-label" style="font-size: 1.15rem; font-weight: 800; color: #0284c7;">3 / 8 Glasses</span>
+        </div>
+        <p style="color: var(--text-secondary);">
+          Staying hydrated keeps joints healthy and gives you steady energy. Tap a cup each time you finish a glass of water:
+        </p>
+
+        <div class="water-cups-row" id="water-cups-container" role="group" aria-label="Glasses of water completed today">
+          <!-- 8 cups generated via JS -->
+        </div>
+      </section>
+
+      <!-- Full Weekly Medication Guide -->
+      <section class="card" aria-labelledby="med-guide-title">
+        <div class="card-header">
+          <h3 class="card-title" id="med-guide-title">
+            <span aria-hidden="true">📋</span>
+            <span>All Prescriptions & Dosages</span>
+          </h3>
+        </div>
+        <div class="pill-list" id="all-meds-list">
+          <!-- Populated via JS -->
+        </div>
+      </section>
+
+    </section>
+
+    <!-- =====================================================================
+         VIEW 3: ASK FOR HELP (VOLUNTEERS & SERVICES)
+         ===================================================================== -->
+    <section id="tab-help" class="view-section" aria-labelledby="view-help-heading">
+      
+      <div class="card" style="background: linear-gradient(135deg, var(--bg-surface), var(--color-primary-light));">
+        <h2 id="view-help-heading" style="font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem;">
+          What would you like assistance with today?
+        </h2>
+        <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 1.25rem;">
+          Our certified, background-checked community volunteers and local caregivers are here to assist with daily chores, rides, or simple friendly visits.
+        </p>
+
+        <!-- Quick Request Buttons -->
+        <div class="quick-request-chips">
+          <button type="button" class="chip-btn" data-service="Grocery Delivery">
+            <span>🛒</span>
+            <span>Grocery Delivery</span>
+          </button>
+          <button type="button" class="chip-btn" data-service="Ride to Doctor">
+            <span>🚗</span>
+            <span>Ride to Doctor</span>
+          </button>
+          <button type="button" class="chip-btn" data-service="Tech & Phone Help">
+            <span>📱</span>
+            <span>Tech & Phone Help</span>
+          </button>
+          <button type="button" class="chip-btn" data-service="Friendly Walk & Chat">
+            <span>🚶</span>
+            <span>Friendly Walk & Chat</span>
+          </button>
+          <button type="button" class="chip-btn" data-service="Light Home Chores">
+            <span>🪴</span>
+            <span>Light Home Chores</span>
+          </button>
+        </div>
+
+        <button type="button" class="btn-tool" id="btn-custom-help-request" style="background: var(--color-primary); color: #ffffff; padding: 0.8rem 1.6rem; font-size: 1.1rem; border-radius: var(--radius-md);">
+          + Request Specific Service or Volunteer
+        </button>
+      </div>
+
+      <!-- Active Help Requests -->
+      <section class="card" aria-labelledby="active-req-title">
+        <div class="card-header">
+          <h3 class="card-title" id="active-req-title">
+            <span aria-hidden="true">⏳</span>
+            <span>Your Scheduled & Active Requests</span>
+          </h3>
+        </div>
+        <div id="active-requests-container">
+          <!-- Populated via JS -->
+        </div>
+      </section>
+
+      <!-- Verified Community Volunteers -->
+      <section class="card" aria-labelledby="volunteers-title">
+        <div class="card-header">
+          <h3 class="card-title" id="volunteers-title">
+            <span aria-hidden="true">🌟</span>
+            <span>Verified Neighborhood Volunteers</span>
+          </h3>
+          <button type="button" class="btn-read-aloud" data-read-aloud="Verified neighborhood volunteers available nearby: Marcus Chen, Hannah Robinson, and Liam O'Connor. All are background checked." aria-label="Read volunteers list aloud">🔊 Read List</button>
+        </div>
+        <div class="grid-3col" id="volunteers-list-container">
+          <!-- Populated via JS -->
+        </div>
+      </section>
+
+    </section>
+
+    <!-- =====================================================================
+         VIEW 4: COMMUNITY & ACTIVITIES
+         ===================================================================== -->
+    <section id="tab-community" class="view-section" aria-labelledby="view-community-heading">
+      
+      <!-- Daily Conversation Corner -->
+      <div class="card" style="background: linear-gradient(135deg, var(--bg-surface), #fef3c7); border-color: #f59e0b;">
+        <div class="card-header">
+          <h2 id="view-community-heading" class="card-title" style="color: #92400e;">
+            <span>💭</span>
+            <span>Daily Conversation Topic: Cherished Memories</span>
+          </h2>
+          <button type="button" class="btn-read-aloud" data-read-aloud="Today's conversation question: What is the most memorable trip or family holiday you have ever taken? Tap to share your story." aria-label="Read conversation question aloud">🔊 Read Topic</button>
+        </div>
+        <p style="font-size: 1.25rem; font-weight: 700; color: #78350f; margin-bottom: 0.8rem;">
+          "What is the most memorable trip or holiday you have ever taken with family or friends?"
+        </p>
+        <p style="color: var(--text-secondary); margin-bottom: 1.2rem;">
+          18 neighbors have shared their stories today. Sharing stories helps keep our community bonded and spirits high!
+        </p>
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <button type="button" class="btn-tool" id="btn-share-story" style="background: #d97706; color: #ffffff; font-size: 1.05rem; padding: 0.6rem 1.4rem; border-radius: var(--radius-md);">
+            ✍️ Share My Memory
+          </button>
+          <button type="button" class="btn-tool" id="btn-read-community-stories" style="background: var(--bg-surface); border: 2px solid #d97706; color: #92400e; font-size: 1.05rem; padding: 0.6rem 1.4rem; border-radius: var(--radius-md);">
+            📖 Read Neighbors' Stories (18)
+          </button>
+        </div>
+      </div>
+
+      <!-- Upcoming Community Activities -->
+      <section class="card" aria-labelledby="activities-title">
+        <div class="card-header">
+          <h3 class="card-title" id="activities-title">
+            <span aria-hidden="true">🎉</span>
+            <span>Upcoming Classes & Community Events</span>
+          </h3>
+          <button type="button" class="btn-read-aloud" data-read-aloud="Upcoming events include Gentle Morning Chair Yoga, Afternoon Herbal Tea and Story Circle, Tech Help Workshop, and Weekend Virtual Bingo." aria-label="Read events list aloud">🔊 Read Events</button>
+        </div>
+        
+        <div class="grid-2col" id="activities-list-container">
+          <!-- Populated via JS -->
+        </div>
+      </section>
+
+    </section>
+
+    <!-- =====================================================================
+         VIEW 5: FAMILY & MESSAGES
+         ===================================================================== -->
+    <section id="tab-family" class="view-section" aria-labelledby="view-family-heading">
+      
+      <div class="card-header" style="margin-bottom: 1rem;">
+        <div>
+          <h2 id="view-family-heading" style="font-size: 1.8rem; font-weight: 800;">Family Circle & Photo Wall</h2>
+          <p style="color: var(--text-secondary); font-size: 1.05rem;">Warm notes, pictures, and voice messages from your children and grandchildren.</p>
+        </div>
+      </div>
+
+      <div class="family-feed" id="family-feed-container">
+        <!-- Populated via JS -->
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- =========================================================================
+       EMERGENCY SOS FULLSCREEN MODAL
+       ========================================================================= -->
+  <div class="modal-overlay" id="sos-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="sos-modal-title">
+    <div class="sos-modal-window">
+      <div class="sos-header-banner">
+        <span class="sos-big-icon" aria-hidden="true">🚨</span>
+        <h2 id="sos-modal-title" style="font-size: 2.2rem; font-weight: 900; color: #dc2626;">EMERGENCY SOS ACTIVE</h2>
+      </div>
+
+      <div class="sos-countdown-circle" id="sos-countdown-number" aria-live="assertive">5</div>
+
+      <p class="sos-instructions">
+        Sending emergency alert to <strong>David Vance (Son)</strong>, <strong>Sarah Vance</strong>, and <strong>Oakwood Emergency Services</strong> in <span id="sos-seconds-text">5 seconds</span>!
+      </p>
+
+      <div class="sos-contacts-list">
+        <div style="font-weight: 800; margin-bottom: 0.5rem; color: #334155; font-size: 1.05rem;">
+          📍 Live Location Broadcast: <span style="font-weight: 600;">Sunnyvale, Apt 4B</span>
+        </div>
+        <div class="sos-contact-row">
+          <span>👨‍💼 David Vance (Primary Son)</span>
+          <a href="tel:+15554328765" style="color: #0284c7; font-weight: 800; text-decoration: none;">(555) 432-8765</a>
+        </div>
+        <div class="sos-contact-row">
+          <span>👩‍⚕️ Sarah Vance (Daughter)</span>
+          <a href="tel:+15557654321" style="color: #0284c7; font-weight: 800; text-decoration: none;">(555) 765-4321</a>
+        </div>
+        <div class="sos-contact-row">
+          <span>🏥 Oakwood Urgent Response</span>
+          <a href="tel:+15559112273" style="color: #dc2626; font-weight: 800; text-decoration: none;">(555) 911-CARE</a>
+        </div>
+      </div>
+
+      <button type="button" class="btn-cancel-sos" id="btn-cancel-sos" aria-label="Cancel emergency SOS alert">
+        ✕ CANCEL SOS (I Am Safe)
+      </button>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL: REQUEST VOLUNTEER / SERVICE
+       ========================================================================= -->
+  <div class="modal-overlay" id="request-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="req-modal-title">
+    <div class="modal-window">
+      <div class="modal-header">
+        <h2 id="req-modal-title">Request Volunteer Assistance</h2>
+        <button type="button" class="btn-close-modal" id="btn-close-request-modal" aria-label="Close dialog">&times;</button>
+      </div>
+      <form id="help-request-form">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label" for="req-service-type">What assistance do you need?</label>
+            <select class="form-control" id="req-service-type" required>
+              <option value="Grocery & Pharmacy Delivery">🛒 Grocery & Pharmacy Delivery</option>
+              <option value="Ride to Doctor Appointment">🚗 Ride to Doctor Appointment</option>
+              <option value="Smartphone or Computer Help">💻 Smartphone or Computer Help</option>
+              <option value="Friendly Walk & Conversation">🚶 Friendly Walk & Conversation</option>
+              <option value="Light Home & Garden Chores">🪴 Light Home & Garden Chores</option>
+              <option value="Other Assistance">✨ Other Assistance</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="req-preferred-time">When would you like this?</label>
+            <input type="text" class="form-control" id="req-preferred-time" placeholder="e.g., Tomorrow at 11:00 AM" required value="Tomorrow at 11:00 AM">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="req-volunteer-preference">Preferred Volunteer (Optional)</label>
+            <select class="form-control" id="req-volunteer-preference">
+              <option value="Any Verified Volunteer">Any Available Verified Volunteer</option>
+              <option value="Marcus Chen">Marcus Chen (Grocery & Tech)</option>
+              <option value="Hannah Robinson">Hannah Robinson (Medical Nurse Escort)</option>
+              <option value="Liam O'Connor">Liam O'Connor (Handyman & Tech)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="req-notes">Any special instructions?</label>
+            <textarea class="form-control" id="req-notes" rows="3" placeholder="e.g. Please ring apartment bell 4B or bring 2% milk from grocery..."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-tool" id="btn-cancel-req-modal" style="background: var(--bg-surface-elevated);">Cancel</button>
+          <button type="submit" class="btn-tool" style="background: var(--color-primary); color: #ffffff; padding: 0.7rem 1.5rem;">
+            Submit Request
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL: ADD MEDICATION REMINDER
+       ========================================================================= -->
+  <div class="modal-overlay" id="add-med-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="add-med-title">
+    <div class="modal-window">
+      <div class="modal-header">
+        <h2 id="add-med-title">Add Medication Reminder</h2>
+        <button type="button" class="btn-close-modal" id="btn-close-med-modal" aria-label="Close dialog">&times;</button>
+      </div>
+      <form id="add-medication-form">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label" for="med-input-name">Medication Name</label>
+            <input type="text" class="form-control" id="med-input-name" placeholder="e.g., Metformin" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="med-input-dosage">Dosage</label>
+            <input type="text" class="form-control" id="med-input-dosage" placeholder="e.g., 500mg" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="med-input-timing">Time of Day</label>
+            <input type="text" class="form-control" id="med-input-timing" placeholder="e.g., Morning with breakfast (8:00 AM)" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="med-input-purpose">Health Purpose</label>
+            <input type="text" class="form-control" id="med-input-purpose" placeholder="e.g., Blood Sugar Control">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-tool" id="btn-cancel-med-modal" style="background: var(--bg-surface-elevated);">Cancel</button>
+          <button type="submit" class="btn-tool" style="background: var(--color-primary); color: #ffffff; padding: 0.7rem 1.5rem;">
+            Save Reminder
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL: SPEED DIAL / CALL SIMULATOR
+       ========================================================================= -->
+  <div class="modal-overlay" id="call-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="call-modal-title">
+    <div class="modal-window" style="text-align: center; padding: 2rem;">
+      <div id="call-avatar-icon" style="font-size: 4rem; margin-bottom: 0.5rem;">👨‍💼</div>
+      <h2 id="call-modal-title" style="font-size: 1.8rem; margin-bottom: 0.3rem;">Calling David Vance...</h2>
+      <p id="call-status-subtitle" style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Connecting phone line...</p>
+      
+      <div style="background: var(--bg-surface-elevated); padding: 1.25rem; border-radius: var(--radius-md); margin-bottom: 1.5rem;">
+        <span style="font-size: 1.2rem; font-weight: 800;" id="call-phone-display">+1 (555) 432-8765</span>
+        <div style="color: var(--text-muted); font-size: 0.95rem; margin-top: 0.3rem;">Simulated High-Definition Voice Call</div>
+      </div>
+
+      <button type="button" class="btn-tool" id="btn-end-call" style="background: #dc2626; color: #ffffff; font-size: 1.2rem; padding: 0.8rem 2rem; border-radius: var(--radius-full); width: 100%;">
+        🔴 End Call
+      </button>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       Toast Notification Container
+       ========================================================================= -->
+  <div class="toast-container" id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- =========================================================================
+       Site Footer
+       ========================================================================= -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-content">
+      <div style="font-weight: 800; font-size: 1.15rem; color: var(--text-primary);">
+        👵 Elder Connect • Designed with care for Senior Independence & Family Peace of Mind
+      </div>
+      <div class="footer-links">
+        <a href="#tab-today" class="footer-nav-link" data-tab="tab-today">Today's Hub</a>
+        <a href="#tab-health" class="footer-nav-link" data-tab="tab-health">Medications</a>
+        <a href="#tab-help" class="footer-nav-link" data-tab="tab-help">Get Help</a>
+        <a href="#tab-community" class="footer-nav-link" data-tab="tab-community">Community Activities</a>
+        <a href="#tab-family" class="footer-nav-link" data-tab="tab-family">Family Circle</a>
+      </div>
+      <p style="font-size: 0.9rem; color: var(--text-muted);">
+        Accessibility Compliant (WCAG AAA Contrast, Font Scaler & Screen Voice Reader Support).
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/speech.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
